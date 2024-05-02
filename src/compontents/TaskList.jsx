@@ -16,7 +16,6 @@ const TaskList = () => {
 
   return (
     <Box sx={{
-      bgcolor: 'yellow',
       display: 'flex',
       justifyContent: 'space-between',
       flexDirection: 'column',
