@@ -7,11 +7,16 @@ const TaskList = () => {
   const [taskInput, setTaskInput] = useState('');
 
   const handleAddTask = () => {
-    // TODO - Add implementation
+    if (taskInput.trim() !== '') {
+      setTasks([...tasks, taskInput]);
+      setTaskInput('');
+    }
   };
 
   const handleDeleteTask = (index) => {
-    // TODO - Add implementation
+    const updatedTasks = [...tasks];
+    updatedTasks.splice(index, 1);
+    setTasks(updatedTasks);
   };
 
   return (
@@ -27,7 +32,7 @@ const TaskList = () => {
           label="Nova Tarefa"
           variant="outlined"
           value={taskInput}
-          onChange={() => console.log('// TODO - Add implementation')}
+          onChange={(e) => setTaskInput(e.target.value)}
         />
       </Box>
       <Box>
@@ -40,7 +45,9 @@ const TaskList = () => {
         </Button>
       </Box>
       <List>
-      {/* TODO - Add implementation to list and delete the task */}
+        {tasks.map((task, index) => (
+          <TaskItem key={index} task={task} onDelete={() => handleDeleteTask(index)} />
+        ))}
       </List>
     </Box>
   );
